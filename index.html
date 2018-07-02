@@ -17,6 +17,7 @@
     <script>
         const circle = d3.selectAll("circle");
         circle.attr("fill", "steelblue");
+        circle.attr("cx", () => (Math.random() * 720));
     </script>
 </body>
 </html>
