@@ -15,12 +15,19 @@
     </svg>
 
     <script>
-        const circle = d3.selectAll("circle");
-        circle.data([32, 57, 112]);
-        circle.attr("fill", "steelblue");
-        circle.attr("cx", () => (Math.random() * 720));
+        const svg = d3.select("svg");
 
-        circle.attr("r", (d) => (Math.sqrt(d)))
+
+        svg.selectAll("circle")
+                .data([32, 57, 112, 293])
+                .enter().append("circle")
+                .attr("cy", 60)
+                .attr("cx", function (d, i) { return i * 100 + 30; })
+                .attr("r", function (d) { return Math.sqrt(d); });
+        var circleToRemove = svg.selectAll("circle")
+                .data([32, 57]);
+        circleToRemove.exit().remove();
+
     </script>
 </body>
 </html>
