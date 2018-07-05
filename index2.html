@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+            <clipPath id="cut-off-bottom">
+                <rect x="0" y="0" width="200" height="50" />
+            </clipPath>
+        </defs>
+
+        <circle cx="100" cy="100" r="100" clip-path="url(#cut-off-bottom)" />
+    </svg>
+    <script>
+        // const svg = d3.select("svg");
+
+
+        // svg.selectAll("circle")
+        //     .data([32, 57, 112, 293])
+        //     .enter().append("circle")
+        //     .attr("cy", 60)
+        //     .attr("cx", function (d, i) { return i * 100 + 30; })
+        //     .attr("r", function (d) { return Math.sqrt(d); });
+        // const circleToRemove = svg.selectAll("circle")
+        //     .data([32, 57]);
+        // circleToRemove.exit().remove();
+
+    </script>
+</body>
+
+</html>
