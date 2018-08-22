@@ -1,49 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<meta charset="utf-8">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <title>Document</title>
+    <title>Update all elements</title>
 </head>
+
+<style>
+    body {
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        font-size: 14px;
+        color: #333;
+    }
+
+    #content div {
+        display: inline-block;
+        margin: 10px;
+        background-color: orange;
+        color: white;
+        padding: 30px;
+        width: 10px;
+        height: 10px;
+        text-align: center;
+    }
+</style>
+
 <body>
-        <svg height="210" width="400">
-            <g>
-                <text x="20" y="35" class="small">My</text>
-            </g>
-        </svg>
+    <div id="content">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 
-        <svg height="500" width="500">
+    <div id="menu">
+        <button onClick="doUpdate();">Update all</button>
+    </div>
 
-            <path d="M250 250 L250 0 A250,250,0,0,1,466.50635094610965,124.99999999999997  L250 250 Z" fill="#ddd" stroke="#ddd"></path>
-            <defs>
-                <path id="p1" d="M250 50 A200,200,0,0,1,423.2050807568877,149.99999999999997" fill="#ddd" stroke="#ddd"></path>
-            </defs>
-            <!-- <text style="font-size: 24px;">
-                <textPath href="#p1" startOffset="50%" text-anchor="middle">1test text</textPath>
-            </text> -->
-
-        </svg>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
     <script>
-        const svg = d3.select("svg");
+        var myData = ['A', 'B', 'C', 'D', 'E'];
 
-        svg.selectAll("g")
-            .append('path').attr("d", "M150 0 L75 200 L225 200 Z")
-            .style('fill', 'grey');
+        function doUpdate() {
+            var u = d3.select('#content')
+                .selectAll('div')
+                .data(myData);
 
-        // console.log(svg.select('path').node(), 'centroid');
-
-        // console.log(path, 'path');
-        svg.selectAll("g")
-            .append('text')
-            .attr('x', '20')
-            .attr('y', '50')
-            .text('text is working');
-
-        svg.append('text').attribute('href', '#p1').text('test text')
-
+            u.enter()
+                .append('div')
+                .merge(u)
+                .text(function (d) {
+                    return d;
+                });
+        }
     </script>
 </body>
+
+Imagine the following scenario: You have 3 divs on the page. You want to add letters to each of these 3 divs and create 2
+additional divs with the lettering that matches the below array: `const myData = ['A', 'B', 'C', 'D', 'E'];` If you bind
+your data to those three divs, you will have 2 letters with no corresponding divs const u = d3.select('#content').selectAll('div').data(myData);
+You now have 3 divs in the UPDATE SELECTION and 2 divs in the ENTER SELECTION (3 divs now have some data that wasn't previously
+there and 2 divs didn't exist before, they are "entering in") Now if you want to add text to the the first three divs that
+were initially on the page and simply add 2 more divs, you could run:
+
+
+
+
+
 </html>
