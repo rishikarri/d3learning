@@ -67,7 +67,7 @@
             .scale([1000]);          // scale things down so see entire US
 
         // Define path generator
-        var path = d3.geoPath()               // path generator that will convert GeoJSON to SVG paths
+        var path = d3.geo.path()               // path generator that will convert GeoJSON to SVG paths
             .projection(projection);  // tell path generator to use albersUsa projection
 
 
@@ -90,7 +90,7 @@
             .style("opacity", 0);
 
         // Load in my states data!
-        d3.csv("./stateslived.csv", function (data) {
+        d3.csv("stateslived.csv", function (data) {
             color.domain([0, 1, 2, 3]); // setting the range of the input data
 
             // Load GeoJSON data and merge with states data
